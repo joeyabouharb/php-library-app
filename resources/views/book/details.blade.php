@@ -18,4 +18,12 @@
 
 </div>
 <a class="btn btn-transparent" href="/">Go Back</a>
+@auth
+<a class="btn btn-transparent" href="/book/edit/{{$data["book"]->ISBN}}">Edit</a>
+<form method="POST" action="/book/delete">
+    @csrf
+<input hidden value="{{$data["book"]->ISBN}}" name="ISBN"/>
+<button type="submit" class="btn btn-transparent">delete</button>
+</form>
+@endauth
 @endsection

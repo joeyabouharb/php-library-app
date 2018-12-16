@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('publisher_id');
             $table->timestamps();
 
+            $table->primary('ISBN');
             $table->foreign('genre_id')
             ->references('id')
             ->on('genres');

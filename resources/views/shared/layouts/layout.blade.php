@@ -17,7 +17,7 @@
                    @include('shared.inc.nav')
                   </header>
         <main role="main" class="row mt-5 pt-4 text-center">
-            <div class="container">
+            <div class="container-fluid">
           @yield('content') 
             </div>
         </div>
