@@ -8,12 +8,11 @@
 <form method="POST" action="/book/saveChanges">
     @csrf
 <div class="form-group row">
-    <label class="col-sm-5 mt-auto mb-auto" for="ISBN">ISBN</label>
-    <input hidden class="col-sm-5 form-control" name="ISBN" type="text" value={{$book->ISBN}} />
+    <input hidden class="col-sm-5 form-control" name="ISBN" type="text" value="{{$book->ISBN}}"" />
 </div>
 <div class="form-group row">
         <label class="col-sm-5 mt-auto mb-auto" for="title">Title</label>
-<input required class="col-sm-5 form-control" name="title" type="text" value={{$book->title}}/>
+<input required class="col-sm-5 form-control" name="title" type="text" value="{{$book->title}}"/>
 </div>
 <div class="form-group row">
         <label class="col-sm-5 mt-auto mb-auto" for="first_name">First Name</label>
@@ -29,12 +28,12 @@
                 @foreach($genres as $genre)
 
                 @if ( $book->genre_id === $genre->id ) 
-                 $selected= 'selected'; 
+                 {{$selected= 'selected'}}
                 @else
-                $selected = '';
+                {{$selected = ''}}
                 @endif 
 
-                <option $selected value="{{$genre->id}}">{{$genre->name}}</option>
+                <option {{$selected}} value="{{$genre->id}}">{{$genre->name}}</option>
                 @endforeach
         </select>
 </div>
@@ -44,11 +43,11 @@
         <select required class="custom-select col-sm-5" name="publisher_id">
             @foreach($publishers as $publisher)
             @if ( $book->publisher_id === $publisher->id ) 
-             $selected= 'selected'; 
+             {{$selected= 'selected'}}
             @else
-            $selected = '';
+           {{$selected = ''}}
             @endif 
-        <option $selected value="{{$publisher->id}}">{{$publisher->publisher_name}}</option>
+        <option {{$selected}} value="{{$publisher->id}}">{{$publisher->publisher_name}}</option>
             @endforeach
             
         </select>

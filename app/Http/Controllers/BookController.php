@@ -63,7 +63,7 @@ class BookController extends Controller
     }
 
     public function edit($ISBN){
-        $book = DB::table('books')
+       $book = DB::table('books')
         ->where('ISBN', $ISBN)
         ->first();
 
@@ -84,8 +84,15 @@ class BookController extends Controller
     
         $publishers = DB::table('publishers')->select('id', 'publisher_name')->get();
         $genres = DB::table('genres')->select('id', 'name')->get();
-        
-        return view('book.edit', compact('publisher', 'genre', 'book', 'genres', 'publishers'));
+        $selected = '';
+        return view('book.edit',
+         compact('publisher',
+          'genre',
+           'book',
+            'genres', 
+            'publishers',
+            'selected'
+        ));
     }
 
     
