@@ -6,6 +6,7 @@
     <h1> Library Book Service <h1>
 <p> Welcome to the online library! Reserve your books here! </p>
     </div>
+    @include('shared.inc.message')
     @include('shared.inc.searchbar')
     @if(count($books) > 0)
    

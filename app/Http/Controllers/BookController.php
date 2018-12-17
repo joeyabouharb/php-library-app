@@ -12,7 +12,7 @@ class BookController extends Controller
 
 
      static $validationBook = array(
-        'ISBN' => 'required|regex:/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/',
+        'ISBN' => 'required|regex:/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/|unique:books,ISBN',
         'title' => 'required|max:126',
         'first_name' => 'required|max:30',
         'last_name' => 'required|max:30',
@@ -22,7 +22,8 @@ class BookController extends Controller
   
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['details']]);
+        $this->middleware('auth', ['except' => ['details']]);    
+        $this->middleware('admin');
     }
    public function details($id){
 
@@ -122,7 +123,7 @@ public function delete(Request $request){
 
     $book = Book::destroy($ISBN);
 
-    return redirect('/')
+    return redirect('/home')
     ->with('success', 'Book Successfully deleted');
 
 }

@@ -25,7 +25,7 @@ Route::get('/search/result', 'SearchController@result');
 Route::get('/book/create', 'BookController@create');
 
 
-Route::post('/book/add', 'BookController@add');
+Route::post('/book/add/{request}', 'BookController@add');
 
 Route::get('/genre/create', 'GenreController@create');
 

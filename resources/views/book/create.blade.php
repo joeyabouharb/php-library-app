@@ -2,10 +2,10 @@
 
 @section('content')
 
-
+@include('shared.inc.message')
 <div class="shadow bg-white p-4">
         <h1>Add Book</h1>
-<form method="POST" action="/book/add">
+<form method="POST" action="/book/add/{request}">
     @csrf
 <div class="form-group row">
     <label class="col-sm-5 mt-auto mb-auto" for="ISBN">ISBN</label>
@@ -41,15 +41,7 @@
         </select>
 </div>
  <button class="btn btn-primary" type="submit">Submit</button>
-    @if ($errors->any())
-    <div class="alert">
-        <ul class="list-group">
-            @foreach ($errors->all() as $error)
-                <li class="list-group-item list-group-item-danger">{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+ 
 </form>
 </div>
 <a class="btn btn-transparent" href="/home">Go Back</a>
